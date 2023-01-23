@@ -5,7 +5,7 @@ async function deployBasic() {
 
   // Deploy the old Certifications contract to test the burning and minting
   const CERTIFICATION = await ethers.getContractFactory("Certification");
-  const certification = await CERTIFICATION.deploy();
+  const oldCertification = await CERTIFICATION.deploy();
 
   // Deploy the E7L Certifications contract
   const E7L_CERTIFICATION_FACTORY = await ethers.getContractFactory(
@@ -14,8 +14,8 @@ async function deployBasic() {
   const E7LCertification = await E7L_CERTIFICATION_FACTORY.deploy(
     "E7L",
     "E7L",
-    " ",
-    certification.address
+    "randomURI",
+    oldCertification.address
   );
 
   // Deploy the basic implementation of the E7L contract
@@ -34,7 +34,7 @@ async function deployBasic() {
     account2,
     token1,
     token2,
-    certification,
+    oldCertification,
     E7LCertification,
   };
 }
