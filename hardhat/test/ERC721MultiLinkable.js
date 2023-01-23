@@ -34,10 +34,6 @@ describe("E7L Basic Implementation", function () {
   });
 
   describe("linkToken()", function () {
-    beforeEach(async function () {
-      await loadFixture(deploy);
-    });
-
     it("should not be linked", async function () {
       const res = await E7LBasic.tokenInfo(0);
       expect(res.linked).to.be.false;
@@ -86,10 +82,6 @@ describe("E7L Basic Implementation", function () {
   });
 
   describe("syncToken()", function () {
-    beforeEach(async function () {
-      await loadFixture(deploy);
-    });
-
     it("should NOT transfer E7L token when transferring parentToken", async function () {
       await E7LBasic.linkToken(0, token1.address, 1);
       await token1.transferFrom(account1.address, account2.address, 1);
