@@ -9,8 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.4.6",
+    "@web3uikit/core": "^0.2.38",
+    "@web3uikit/icons": "^0.2.37",
+    "@web3uikit/web3": "^0.2.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-moralis": "^1.4.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
