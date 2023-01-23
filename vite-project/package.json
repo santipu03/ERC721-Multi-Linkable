@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.4.6",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@web3uikit/core": "^0.2.38",
     "@web3uikit/icons": "^0.2.37",
     "@web3uikit/web3": "^0.2.2",
+    "framer-motion": "^8.5.2",
+    "moralis-v1": "^1.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-moralis": "^1.4.2"
