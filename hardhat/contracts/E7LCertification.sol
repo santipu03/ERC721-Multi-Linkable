@@ -21,7 +21,7 @@ contract E7LCertification is ERC721MultiLinkable, ERC721Enumerable {
         string memory _URI,
         address _burnableContract
     ) ERC721MultiLinkable(_name, _symbol) {
-        owner = tx.origin;
+        owner = msg.sender;
         burnableContract = _burnableContract;
         URI = _URI;
     }
