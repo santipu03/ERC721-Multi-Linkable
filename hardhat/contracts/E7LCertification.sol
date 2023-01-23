@@ -33,6 +33,10 @@ contract E7LCertification is ERC721MultiLinkable, ERC721Enumerable {
         _safeMint(msg.sender, tokenId);
     }
 
+    function _baseURI() internal view virtual override returns (string memory) {
+        return URI;
+    }
+
     function tokenURI(
         uint256 tokenId
     ) public view virtual override returns (string memory) {
