@@ -28,7 +28,10 @@ contract E7LCertification is ERC721MultiLinkable, ERC721Enumerable {
 
     // This function requires that tokenId is approved
     function mint(uint256 tokenId) public {
-        require(IBurnable(burnableContract).ownerOf(tokenId) == msg.sender);
+        require(
+            IBurnable(burnableContract).ownerOf(tokenId) == msg.sender,
+            "E7LCertification: Not owner of burnable token"
+        );
         IBurnable(burnableContract).burn(tokenId);
         _safeMint(msg.sender, tokenId);
     }
