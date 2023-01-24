@@ -21,7 +21,7 @@ function MintE7L({ alchemy }) {
   const [selectedNFT, setSelectedNFT] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [hasQueried, setHasQueried] = useState(false);
-  const [nftForOwner, setNftsForOwner] = useState([]);
+  const [nftsForOwner, setNftsForOwner] = useState([]);
   const toast = useToast();
   const { isWeb3Enabled, account } = useMoralis();
 
@@ -57,7 +57,7 @@ function MintE7L({ alchemy }) {
   };
 
   const renderNftsForOwner = () => {
-    return nftForOwner.map((nft) => {
+    return nftsForOwner.map((nft) => {
       return (
         <MenuItem
           onClick={(e) => setSelectedNFT(e.target.textContent)}
@@ -135,7 +135,7 @@ function MintE7L({ alchemy }) {
         </MenuList>
       </Menu>
       <Button
-        colorScheme="teal"
+        colorScheme="blue"
         variant="solid"
         onClick={handleButtonClick}
         isLoading={isButtonLoading}

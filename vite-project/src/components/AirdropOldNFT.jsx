@@ -54,7 +54,7 @@ function AirdropOldNFT() {
     <>
       <Heading>Receive Old Certification NFT</Heading>
       <Button
-        colorScheme="teal"
+        colorScheme="blue"
         variant="solid"
         onClick={handleButtonClick}
         isLoading={isButtonLoading}

@@ -57,7 +57,7 @@ function AirdropTestNFT() {
         For testing purposes, you will receive an NFT ERC721 for the linking
       </Text>
       <Button
-        colorScheme="teal"
+        colorScheme="blue"
         variant="solid"
         onClick={handleButtonClick}
         isLoading={isButtonLoading}
