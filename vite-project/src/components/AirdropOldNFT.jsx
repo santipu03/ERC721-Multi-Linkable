@@ -29,6 +29,13 @@ function AirdropOldNFT() {
   const handleAirdropError = (e) => {
     setIsButtonLoading(false);
     console.log(e);
+    toast({
+      title: "OOOPS!",
+      description: "Something went wrong. Try Again",
+      status: "error",
+      duration: 9000,
+      isClosable: true,
+    });
   };
 
   const handleAirdropSuccess = async (tx) => {
