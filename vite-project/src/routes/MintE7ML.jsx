@@ -7,6 +7,8 @@ import {
   Button,
   useToast,
   Box,
+  Flex,
+  Text,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
@@ -121,30 +123,48 @@ function MintE7ML({ alchemy }) {
   }, [isWeb3Enabled]);
 
   return (
-    <Box padding={"3rem 6rem"} minHeight={"calc(100vh - 161px)"}>
+    <Flex
+      padding={"3rem 6rem"}
+      minHeight={"calc(100vh - 161px)"}
+      flexDir="column"
+      alignItems="center"
+      gap={"20px"}
+    >
       <Heading>Mint E7ML Certification NFT</Heading>
-      <Menu>
-        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-          {selectedNFT ? selectedNFT : "Choose NFT"}
-        </MenuButton>
-        <MenuList>
-          {hasQueried ? (
-            renderNftsForOwner()
-          ) : (
-            <MenuItem>Connect your Wallet!</MenuItem>
-          )}
-        </MenuList>
-      </Menu>
-      <Button
-        colorScheme="blue"
-        variant="solid"
-        onClick={handleButtonClick}
-        isLoading={isButtonLoading}
-        loadingText="Minting..."
-      >
-        Receive NFT
-      </Button>
-    </Box>
+      <Text>Now you are going to sign 2 transactions.</Text>
+      <Text>
+        1. You will approve for the Certification NFT you've minted before to
+        the E7ML contract
+      </Text>
+      <Text>
+        2. You will call the mint function in the E7ML contract. It will burn
+        your Certification NFT to mint a E7ML Certification NFT
+      </Text>
+
+      <Flex gap="20px">
+        <Menu>
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            {selectedNFT ? selectedNFT : "Choose NFT"}
+          </MenuButton>
+          <MenuList>
+            {hasQueried ? (
+              renderNftsForOwner()
+            ) : (
+              <MenuItem>Connect your Wallet!</MenuItem>
+            )}
+          </MenuList>
+        </Menu>
+        <Button
+          colorScheme="blue"
+          variant="solid"
+          onClick={handleButtonClick}
+          isLoading={isButtonLoading}
+          loadingText="Minting..."
+        >
+          Receive NFT
+        </Button>
+      </Flex>
+    </Flex>
   );
 }
 
