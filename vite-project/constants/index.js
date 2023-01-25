@@ -1,7 +1,7 @@
 export const TOKEN1_ADDRESS = "0x4a5A837Dbf77C32882Aa3baebCAE1220f084129c";
 export const CERTIFICATION_ADDRESS =
   "0xf372cE73EDF3Eef826ab43d0C2588231d0ed8628";
-export const E7L_ADDRESS = "0x8235f39F03962F09672dFBB6329aa93F85637500";
+export const E7ML_ADDRESS = "0x8235f39F03962F09672dFBB6329aa93F85637500";
 
 export const TOKEN1_ABI = [
   {
@@ -718,7 +718,7 @@ export const CERTIFICATION_ABI = [
   },
 ];
 
-export const E7L_ABI = [
+export const E7ML_ABI = [
   {
     inputs: [
       {
