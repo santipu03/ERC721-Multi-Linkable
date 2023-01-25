@@ -7,6 +7,7 @@ import ErrorPage from "./error-page";
 import Airpdrops from "./routes/Airdrops";
 import LinkE7ML from "./routes/LinkE7ML";
 import MintE7ML from "./routes/MintE7ML";
+import WalletE7ML from "./routes/WalletE7ML";
 import { Alchemy, Network } from "alchemy-sdk";
 
 const config = {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "link",
     element: <LinkE7ML alchemy={alchemy} />,
+  },
+  {
+    path: "wallet",
+    element: <WalletE7ML alchemy={alchemy} />,
   },
 ]);
 
