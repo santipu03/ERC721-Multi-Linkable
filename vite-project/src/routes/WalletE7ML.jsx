@@ -56,12 +56,20 @@ function WalletE7ML({ alchemy }) {
 
   const renderLinkedNftsForOwner = () => {
     return linkedTokens.map((nft) => {
-      return <LinkedNFT key={nft.tokenId} nft={nft} />;
+      return (
+        <Flex alignItems={"center"} justifyContent="center" key={nft.tokenId}>
+          <LinkedNFT nft={nft} />
+        </Flex>
+      );
     });
   };
   const renderUnlinkedNftsForOwner = () => {
     return unlinkedTokens.map((nft) => {
-      return <UnlinkedNFT nft={nft} key={nft.tokenId} />;
+      return (
+        <Flex alignItems={"center"} justifyContent="center" key={nft.tokenId}>
+          <UnlinkedNFT nft={nft} />
+        </Flex>
+      );
     });
   };
 
@@ -106,8 +114,10 @@ function WalletE7ML({ alchemy }) {
     <Box padding={"3rem 12rem"} minHeight={"calc(100vh - 161px)"}>
       <Heading>Your E7ML Wallet</Heading>
       <Divider margin="1rem" />
-      <Heading size={"lg"}>Linked Tokens: </Heading>
-      <SimpleGrid>
+      <Heading size={"lg"} marginBottom={"20px"}>
+        Linked Tokens:{" "}
+      </Heading>
+      <SimpleGrid columns={"4"}>
         {hasQueried ? (
           renderLinkedNftsForOwner()
         ) : (
@@ -117,8 +127,10 @@ function WalletE7ML({ alchemy }) {
         )}
       </SimpleGrid>
       <Divider margin={"1rem"} />
-      <Heading size={"lg"}>Unlinked Tokens: </Heading>
-      <SimpleGrid>
+      <Heading size={"lg"} marginBottom={"20px"}>
+        Unlinked Tokens:{" "}
+      </Heading>
+      <SimpleGrid columns={"4"} gap="15px">
         {hasQueried ? (
           renderUnlinkedNftsForOwner()
         ) : (

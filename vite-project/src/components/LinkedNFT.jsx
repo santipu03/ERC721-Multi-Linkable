@@ -8,8 +8,9 @@ function LinkedNFT({ nft }) {
       borderRadius={"10px"}
       height={"250px"}
       width={"250px"}
-      bgColor={"#f8f9fa"}
+      bgColor={"#fff"}
       justifyContent={"space-between"}
+      padding="10px"
     >
       <Flex
         width={"100%"}
