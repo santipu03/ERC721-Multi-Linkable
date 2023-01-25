@@ -1,4 +1,4 @@
-import { Heading, Button, useToast } from "@chakra-ui/react";
+import { Heading, Button, useToast, Flex, Box, Text } from "@chakra-ui/react";
 import { useWeb3Contract } from "react-moralis";
 import { CERTIFICATION_ADDRESS, CERTIFICATION_ABI } from "../../constants";
 import { useState } from "react";
@@ -51,18 +51,25 @@ function AirdropOldNFT() {
   };
 
   return (
-    <>
-      <Heading>Receive Old Certification NFT</Heading>
-      <Button
-        colorScheme="blue"
-        variant="solid"
-        onClick={handleButtonClick}
-        isLoading={isButtonLoading}
-        loadingText="Minting..."
-      >
-        Receive NFT
-      </Button>
-    </>
+    <Box padding="40px 0">
+      <Heading textAlign="center">Receive Old Certification NFT</Heading>
+      <Text textAlign="center">
+        You will receive a simple NFT in your wallet that represents a
+        Certification that you earned.
+      </Text>
+      <Text textAlign="center">Is a simple ERC721 Burnable Token.</Text>
+      <Flex justifyContent="center">
+        <Button
+          colorScheme="blue"
+          variant="solid"
+          onClick={handleButtonClick}
+          isLoading={isButtonLoading}
+          loadingText="Minting..."
+        >
+          Receive NFT
+        </Button>
+      </Flex>
+    </Box>
   );
 }
 

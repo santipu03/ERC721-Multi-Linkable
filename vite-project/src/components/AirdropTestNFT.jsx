@@ -1,4 +1,4 @@
-import { Heading, Text, Button, useToast } from "@chakra-ui/react";
+import { Heading, Text, Button, useToast, Flex, Box } from "@chakra-ui/react";
 import { useWeb3Contract } from "react-moralis";
 import { TOKEN1_ABI, TOKEN1_ADDRESS } from "../../constants";
 import { useState } from "react";
@@ -51,21 +51,28 @@ function AirdropTestNFT() {
   };
 
   return (
-    <>
-      <Heading>Receive a Test NFT to Link</Heading>
-      <Text>
-        For testing purposes, you will receive an NFT ERC721 for the linking
+    <Box padding="40px 0">
+      <Heading textAlign="center">Receive a Test NFT to Link</Heading>
+      <Text textAlign="center">
+        You will receive an NFT that you'll use for linking the E7ML Token.
       </Text>
-      <Button
-        colorScheme="blue"
-        variant="solid"
-        onClick={handleButtonClick}
-        isLoading={isButtonLoading}
-        loadingText="Minting..."
-      >
-        Receive NFT
-      </Button>
-    </>
+      <Text textAlign="center">
+        In theory, you can link the E7ML token to any NFT you have but this page
+        has been built to link the E7ML to this NFT you'll receive. We've called
+        it TOKEN1
+      </Text>
+      <Flex justifyContent="center">
+        <Button
+          colorScheme="blue"
+          variant="solid"
+          onClick={handleButtonClick}
+          isLoading={isButtonLoading}
+          loadingText="Minting..."
+        >
+          Receive NFT
+        </Button>
+      </Flex>
+    </Box>
   );
 }
 
