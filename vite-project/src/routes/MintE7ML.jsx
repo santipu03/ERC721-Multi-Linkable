@@ -32,7 +32,6 @@ function MintE7ML({ alchemy }) {
     abi: E7ML_ABI,
     contractAddress: E7ML_ADDRESS,
     functionName: "mint",
-    msgValue: 0,
     params: {
       tokenId: parseInt(selectedNFT.slice(1)),
     },
@@ -42,7 +41,6 @@ function MintE7ML({ alchemy }) {
     abi: CERTIFICATION_ABI,
     contractAddress: CERTIFICATION_ADDRESS,
     functionName: "approve",
-    msgValue: 0,
     params: {
       to: E7ML_ADDRESS,
       tokenId: parseInt(selectedNFT.slice(1)),
@@ -51,6 +49,7 @@ function MintE7ML({ alchemy }) {
 
   const queryNfts = async () => {
     const nfts = await alchemy.nft.getNftsForOwner(account);
+    console.log(nfts.ownedNfts);
     const filteredNfts = nfts.ownedNfts.filter((nft) => {
       return nft.contract.address === CERTIFICATION_ADDRESS.toLowerCase();
     });
@@ -124,7 +123,7 @@ function MintE7ML({ alchemy }) {
 
   return (
     <Flex
-      padding={"3rem 6rem"}
+      padding={"3rem 12rem"}
       minHeight={"calc(100vh - 161px)"}
       flexDir="column"
       alignItems="center"

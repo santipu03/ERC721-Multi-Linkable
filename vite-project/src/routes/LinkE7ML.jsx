@@ -135,7 +135,7 @@ function LinkE7ML({ alchemy }) {
 
   return (
     <Flex
-      padding={"3rem 6rem"}
+      padding={"3rem 12rem"}
       minHeight={"calc(100vh - 161px)"}
       flexDir="column"
       alignItems="center"
