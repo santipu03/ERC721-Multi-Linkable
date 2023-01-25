@@ -12,6 +12,8 @@ import {
   StackDivider,
   Box,
   useToast,
+  Flex,
+  Text,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
@@ -68,8 +70,6 @@ function LinkE7ML({ alchemy }) {
   };
 
   const handleButtonClick = () => {
-    console.log(parseInt(token1SelectedNFT.slice(1)));
-    console.log(parseInt(E7MLSelectedNFT.slice(1)));
     linkToken({
       onError: (e) => handleTxError(e),
       onSuccess: handleLinkSuccess,
@@ -92,13 +92,24 @@ function LinkE7ML({ alchemy }) {
   const handleTxError = (e) => {
     setIsButtonLoading(false);
     console.log(e);
-    toast({
-      title: "OOOPS!",
-      description: "Something went wrong. Try Again",
-      status: "error",
-      duration: 9000,
-      isClosable: true,
-    });
+
+    if (e.message.includes("already linked")) {
+      toast({
+        title: "Not this token",
+        description: "Seems like this token is already linked!",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "OOOPS!",
+        description: "Something went wrong. Try Again",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   const queryNfts = async () => {
@@ -109,7 +120,6 @@ function LinkE7ML({ alchemy }) {
     const E7MLNfts = nfts.ownedNfts.filter(
       (nft) => nft.contract.address === E7ML_ADDRESS.toLowerCase()
     );
-    console.log(token1Nfts);
     setToken1NftsForOwner(token1Nfts);
     setE7MLNftsForOwner(E7MLNfts);
     setHasQueried(true);
@@ -124,11 +134,24 @@ function LinkE7ML({ alchemy }) {
   }, [isWeb3Enabled]);
 
   return (
-    <Box padding={"3rem 6rem"} minHeight={"calc(100vh - 161px)"}>
+    <Flex
+      padding={"3rem 6rem"}
+      minHeight={"calc(100vh - 161px)"}
+      flexDir="column"
+      alignItems="center"
+      gap={"20px"}
+    >
       <Heading>Link your E7ML Certification to your NFT</Heading>
-      <Card>
+      <Text>Now it's time for the linking!</Text>
+      <Text>
+        You will link one of your E7ML tokens to a parent NFT, in this case it
+        will be one TOKEN1
+      </Text>
+      <Card width="400px">
         <CardHeader>
-          <Heading size="md">Select the NFTs to link</Heading>
+          <Heading size="md" textAlign="center">
+            Select the NFTs to link
+          </Heading>
         </CardHeader>
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
@@ -175,7 +198,7 @@ function LinkE7ML({ alchemy }) {
       >
         Link NFTs
       </Button>
-    </Box>
+    </Flex>
   );
 }
 
