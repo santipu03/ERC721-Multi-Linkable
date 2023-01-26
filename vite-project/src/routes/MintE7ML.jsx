@@ -49,11 +49,9 @@ function MintE7ML({ alchemy }) {
 
   const queryNfts = async () => {
     const nfts = await alchemy.nft.getNftsForOwner(account);
-    console.log(nfts.ownedNfts);
     const filteredNfts = nfts.ownedNfts.filter((nft) => {
       return nft.contract.address === CERTIFICATION_ADDRESS.toLowerCase();
     });
-    console.log(filteredNfts);
     setNftsForOwner(filteredNfts);
     setHasQueried(true);
   };
@@ -72,8 +70,6 @@ function MintE7ML({ alchemy }) {
   };
 
   const handleButtonClick = async () => {
-    console.log(parseInt(selectedNFT.slice(1)));
-    console.log(E7ML_ADDRESS);
     setIsButtonLoading(true);
     approve({
       onError: (e) => handleTxError(e),

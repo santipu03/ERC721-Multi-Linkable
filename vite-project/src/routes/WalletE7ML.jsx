@@ -56,9 +56,12 @@ function WalletE7ML({ alchemy }) {
 
   const renderLinkedNftsForOwner = () => {
     return linkedTokens.map((nft) => {
+      const parentToken = token1NftsForOwner.find(
+        (token) => token.tokenId === nft.parentTokenId
+      );
       return (
         <Flex alignItems={"center"} justifyContent="center" key={nft.tokenId}>
-          <LinkedNFT nft={nft} />
+          <LinkedNFT nft={nft} parentToken={parentToken} />
         </Flex>
       );
     });
@@ -79,6 +82,7 @@ function WalletE7ML({ alchemy }) {
     for (let i = 0; i < nfts.length; i++) {
       const tokenInfo = await getTokenInfo(nfts[i]);
       if (tokenInfo[0] && !isNftInArray(linkedTokens, nfts[i])) {
+        nfts[i].parentTokenId = tokenInfo.parentTokenId.toString();
         localLinkedTokens.push(nfts[i]);
       } else if (!tokenInfo[0] && !isNftInArray(unlinkedTokens, nfts[i])) {
         localUnlinkedTokens.push(nfts[i]);

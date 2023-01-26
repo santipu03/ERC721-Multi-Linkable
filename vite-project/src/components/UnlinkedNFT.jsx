@@ -4,7 +4,7 @@ function UnlinkedNFT({ nft }) {
   return (
     <Flex
       flexDir={"column"}
-      border={"1px solid grey"}
+      boxShadow="rgb(0 0 0 / 8%) 0px 4px 15px"
       borderRadius={"10px"}
       height={"250px"}
       width={"250px"}
