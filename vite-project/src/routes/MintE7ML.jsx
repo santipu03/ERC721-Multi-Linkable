@@ -123,7 +123,8 @@ function MintE7ML({ alchemy }) {
 
   return (
     <Flex
-      padding={"3rem 12rem"}
+      paddingY={"3rem"}
+      paddingX={[10, 10, 10, 20, 150, 200]}
       minHeight={"calc(100vh - 161px)"}
       flexDir="column"
       alignItems="center"

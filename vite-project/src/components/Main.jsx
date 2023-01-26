@@ -9,7 +9,11 @@ import {
 
 function Main() {
   return (
-    <Box padding={"3rem 12rem"} minHeight={"calc(100vh - 161px)"}>
+    <Box
+      paddingY={"3rem"}
+      paddingX={[10, 10, 10, 20, 150, 200]}
+      minHeight={"calc(100vh - 161px)"}
+    >
       <Heading>A new way of linking 2.0</Heading>
       <Heading size="md" fontWeight="normal">
         ERC721MultiLinkable is an ampliation of the{" "}

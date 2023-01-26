@@ -104,41 +104,59 @@ function WalletE7ML({ alchemy }) {
 
   useEffect(() => {
     if (isWeb3Enabled) {
-      queryNfts();
+      if (!hasQueried) {
+        queryNfts();
+      }
     } else {
       setHasQueried(false);
     }
   }, [isWeb3Enabled]);
 
   return (
-    <Box padding={"3rem 12rem"} minHeight={"calc(100vh - 161px)"}>
+    <Box
+      paddingY={"3rem"}
+      paddingX={[10, 10, 10, 20, 150, 200]}
+      minHeight={"calc(100vh - 161px)"}
+    >
       <Heading>Your E7ML Wallet</Heading>
       <Divider margin="1rem" />
       <Heading size={"lg"} marginBottom={"20px"}>
         Linked Tokens:{" "}
       </Heading>
-      <SimpleGrid columns={"4"}>
-        {hasQueried ? (
-          renderLinkedNftsForOwner()
-        ) : (
+      {hasQueried ? (
+        linkedTokens.length === 0 ? (
           <Center margin="30px 0" fontSize="1.5rem">
-            Loading...
+            No NFTs in your wallet...
           </Center>
-        )}
-      </SimpleGrid>
+        ) : (
+          <SimpleGrid columns={"4"} gap={"15px"}>
+            {renderLinkedNftsForOwner()}
+          </SimpleGrid>
+        )
+      ) : (
+        <Center margin="30px 0" fontSize="1.5rem">
+          Loading...
+        </Center>
+      )}
       <Divider margin={"1rem"} />
       <Heading size={"lg"} marginBottom={"20px"}>
         Unlinked Tokens:{" "}
       </Heading>
-      <SimpleGrid columns={"4"} gap="15px">
-        {hasQueried ? (
-          renderUnlinkedNftsForOwner()
-        ) : (
+      {hasQueried ? (
+        unlinkedTokens.length === 0 ? (
           <Center margin="30px 0" fontSize="1.5rem">
-            Loading...
+            No NFTs in your wallet...
           </Center>
-        )}
-      </SimpleGrid>
+        ) : (
+          <SimpleGrid columns={"4"} gap={"15px"}>
+            {renderUnlinkedNftsForOwner()}
+          </SimpleGrid>
+        )
+      ) : (
+        <Center margin="30px 0" fontSize="1.5rem">
+          Loading...
+        </Center>
+      )}
     </Box>
   );
 }

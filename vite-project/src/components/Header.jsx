@@ -8,7 +8,8 @@ function Header() {
         alignItems={"center"}
         justifyContent={"space-between"}
         h={"100px"}
-        padding={"30px 12rem"}
+        paddingY={"30px"}
+        paddingX={[10, 10, 10, 20, 150, 200]}
       >
         <a href="/">
           <Heading m={0} fontSize={36} p={0}>
