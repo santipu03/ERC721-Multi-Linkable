@@ -9,6 +9,9 @@ import {
   Box,
   Flex,
   Text,
+  Card,
+  CardHeader,
+  CardBody,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
@@ -130,25 +133,44 @@ function MintE7ML({ alchemy }) {
         bg="#fff"
         boxShadow="rgb(0 0 0 / 8%) 0px 4px 15px"
         borderRadius={10}
-        padding="20px"
+        padding="40px"
         marginX={[0, 0, "3rem", "6rem", "6rem", "16rem"]}
       >
         <Heading>Mint E7ML Certification NFT</Heading>
         <Text>Now you are going to sign 2 transactions.</Text>
-        <Heading>1. </Heading>
-        <Text>
-          You will approve for the Certification NFT you've minted to the E7ML
-          contract
-        </Text>
-        <Heading>2. </Heading>
-        <Text>You will call the mint function in the E7ML contract.</Text>
-        <Text>
-          It will burn your Certification NFT to mint a E7ML Certification NFT
-        </Text>
+        <Flex gap={"20px"}>
+          <Card variant={"filled"} width={"50%"}>
+            <CardHeader>
+              <Heading size={"md"} textAlign="center">
+                Transaction 1
+              </Heading>
+            </CardHeader>
+            <CardBody>
+              <Text>
+                You will approve for the Certification NFT you've minted to the
+                E7ML contract
+              </Text>
+            </CardBody>
+          </Card>
+          <Card variant={"filled"} width={"50%"}>
+            <CardHeader>
+              <Heading size={"md"} textAlign="center">
+                Transaction 2
+              </Heading>
+            </CardHeader>
+            <CardBody>
+              <Text>
+                You will call the mint function in the E7ML contract. It will
+                burn your Certification NFT to mint a E7ML Certification NFT
+              </Text>
+            </CardBody>
+          </Card>
+        </Flex>
 
+        <Heading margin={"3rem 0"}>Are you ready? Let's go!</Heading>
         <Flex gap="20px">
           <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} size="lg">
               {selectedNFT ? selectedNFT : "Choose NFT"}
             </MenuButton>
             <MenuList>
@@ -165,6 +187,7 @@ function MintE7ML({ alchemy }) {
             onClick={handleButtonClick}
             isLoading={isButtonLoading}
             loadingText="Minting..."
+            size={"lg"}
           >
             Mint NFT
           </Button>

@@ -145,7 +145,7 @@ function LinkE7ML({ alchemy }) {
         bg="#fff"
         boxShadow="rgb(0 0 0 / 8%) 0px 4px 15px"
         borderRadius={10}
-        padding="20px"
+        padding="40px"
         flexDir="column"
         marginX={[0, 0, "3rem", "6rem", "6rem", "16rem"]}
       >
