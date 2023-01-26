@@ -13,10 +13,69 @@ import {
   Button,
   Heading,
   Box,
+  useToast,
 } from "@chakra-ui/react";
+import { useWeb3Contract } from "react-moralis";
+import { E7ML_ABI, E7ML_ADDRESS } from "../../constants";
+import { useState } from "react";
 
 function LinkedNFT({ nft, parentToken }) {
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
+
+  const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { runContractFunction: syncToken } = useWeb3Contract({
+    abi: E7ML_ABI,
+    contractAddress: E7ML_ADDRESS,
+    functionName: "syncToken",
+    params: {
+      tokenId: parseInt(nft.tokenId),
+    },
+  });
+
+  const handleSyncSuccess = async (tx) => {
+    await tx.wait(1);
+    toast({
+      title: "E7ML Token Synced",
+      description: "Now you have the E7ML synced with the right owner",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
+    setIsButtonLoading(false);
+  };
+
+  const handleTxError = (e) => {
+    setIsButtonLoading(false);
+    console.log(e);
+
+    if (e.message.includes("already synced")) {
+      toast({
+        title: "Not this token",
+        description: "Seems like this token is already synced!",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "OOOPS!",
+        description: "Something went wrong. Try Again",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+  };
+
+  const handleButtonClick = () => {
+    syncToken({
+      onError: (e) => handleTxError(e),
+      onSuccess: handleSyncSuccess,
+    });
+    setIsButtonLoading(true);
+  };
 
   return (
     <>
@@ -26,7 +85,7 @@ function LinkedNFT({ nft, parentToken }) {
           <ModalHeader>E7ML #{nft.tokenId}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Flex gap={"30px"}>
+            <Flex gap={"30px"} justifyContent="space-around">
               <Box>
                 <Heading size={"md"} marginBottom="10px" textAlign="center">
                   Parent Token
@@ -89,7 +148,7 @@ function LinkedNFT({ nft, parentToken }) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
+            <Button colorScheme="blue" mr={3} onClick={handleButtonClick}>
               Sync Token
             </Button>
           </ModalFooter>
@@ -106,8 +165,6 @@ function LinkedNFT({ nft, parentToken }) {
         padding="10px"
         onClick={onOpen}
       >
-        {console.log(nft)}
-        {console.log(parentToken)}
         <Flex
           width={"100%"}
           height={"180px"}
