@@ -9,4 +9,8 @@ contract Token1 is ERC721 {
     function mint(uint256 tokenId) public {
         _safeMint(msg.sender, tokenId);
     }
+
+    function _baseURI() internal pure override returns (string memory) {
+        return "Qme8miFUJmsCgPU3wrz1afDzhysJBUGDbKMu5x8JzVLY3f";
+    }
 }
