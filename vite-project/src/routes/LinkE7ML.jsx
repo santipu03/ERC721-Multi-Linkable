@@ -134,72 +134,79 @@ function LinkE7ML({ alchemy }) {
   }, [isWeb3Enabled]);
 
   return (
-    <Flex
+    <Box
       paddingY={"3rem"}
       paddingX={[10, 10, 10, 20, 150, 200]}
       minHeight={"calc(100vh - 161px)"}
-      flexDir="column"
-      alignItems="center"
-      gap={"20px"}
     >
-      <Heading>Link your E7ML Certification to your NFT</Heading>
-      <Text>Now it's time for the linking!</Text>
-      <Text>
-        You will link one of your E7ML tokens to a parent NFT, in this case it
-        will be one TOKEN1
-      </Text>
-      <Card width="400px">
-        <CardHeader>
-          <Heading size="md" textAlign="center">
-            Select the NFTs to link
-          </Heading>
-        </CardHeader>
-        <CardBody>
-          <Stack divider={<StackDivider />} spacing="4">
-            <Box>
-              <Heading size="s">Token1</Heading>
-              <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {token1SelectedNFT ? token1SelectedNFT : "Choose NFT"}
-                </MenuButton>
-                <MenuList>
-                  {hasQueried ? (
-                    renderToken1NftsForOwner()
-                  ) : (
-                    <MenuItem>Connect your Wallet!</MenuItem>
-                  )}
-                </MenuList>
-              </Menu>
-            </Box>
-            <Box>
-              <Heading size="s">E7ML Certification</Heading>
-              <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {E7MLSelectedNFT ? E7MLSelectedNFT : "Choose NFT"}
-                </MenuButton>
-                <MenuList>
-                  {hasQueried ? (
-                    renderE7MLNftsForOwner()
-                  ) : (
-                    <MenuItem>Connect your Wallet!</MenuItem>
-                  )}
-                </MenuList>
-              </Menu>
-            </Box>
-          </Stack>
-        </CardBody>
-      </Card>
-
-      <Button
-        colorScheme="blue"
-        variant="solid"
-        onClick={handleButtonClick}
-        isLoading={isButtonLoading}
-        loadingText="Linking..."
+      <Flex
+        alignItems="center"
+        gap={"20px"}
+        bg="#fff"
+        boxShadow="rgb(0 0 0 / 8%) 0px 4px 15px"
+        borderRadius={10}
+        padding="20px"
+        flexDir="column"
       >
-        Link NFTs
-      </Button>
-    </Flex>
+        <Heading>Link your E7ML Certification to your NFT</Heading>
+        <Text>Now it's time for the linking!</Text>
+        <Text>
+          You will link one of your E7ML tokens to a parent NFT, in this case it
+          will be one TOKEN1
+        </Text>
+        <Card width="400px">
+          <CardHeader>
+            <Heading size="md" textAlign="center">
+              Select the NFTs to link
+            </Heading>
+          </CardHeader>
+          <CardBody>
+            <Stack divider={<StackDivider />} spacing="4">
+              <Box>
+                <Heading size="s">Token1</Heading>
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                    {token1SelectedNFT ? token1SelectedNFT : "Choose NFT"}
+                  </MenuButton>
+                  <MenuList>
+                    {hasQueried ? (
+                      renderToken1NftsForOwner()
+                    ) : (
+                      <MenuItem>Connect your Wallet!</MenuItem>
+                    )}
+                  </MenuList>
+                </Menu>
+              </Box>
+              <Box>
+                <Heading size="s">E7ML Certification</Heading>
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                    {E7MLSelectedNFT ? E7MLSelectedNFT : "Choose NFT"}
+                  </MenuButton>
+                  <MenuList>
+                    {hasQueried ? (
+                      renderE7MLNftsForOwner()
+                    ) : (
+                      <MenuItem>Connect your Wallet!</MenuItem>
+                    )}
+                  </MenuList>
+                </Menu>
+              </Box>
+            </Stack>
+          </CardBody>
+        </Card>
+
+        <Button
+          colorScheme="blue"
+          variant="solid"
+          onClick={handleButtonClick}
+          isLoading={isButtonLoading}
+          loadingText="Linking..."
+        >
+          Link NFTs
+        </Button>
+      </Flex>
+    </Box>
   );
 }
 

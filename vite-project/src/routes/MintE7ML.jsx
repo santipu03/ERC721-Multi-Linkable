@@ -118,49 +118,58 @@ function MintE7ML({ alchemy }) {
   }, [isWeb3Enabled]);
 
   return (
-    <Flex
+    <Box
       paddingY={"3rem"}
       paddingX={[10, 10, 10, 20, 150, 200]}
       minHeight={"calc(100vh - 161px)"}
-      flexDir="column"
-      alignItems="center"
-      gap={"20px"}
     >
-      <Heading>Mint E7ML Certification NFT</Heading>
-      <Text>Now you are going to sign 2 transactions.</Text>
-      <Text>
-        1. You will approve for the Certification NFT you've minted before to
-        the E7ML contract
-      </Text>
-      <Text>
-        2. You will call the mint function in the E7ML contract. It will burn
-        your Certification NFT to mint a E7ML Certification NFT
-      </Text>
+      <Flex
+        flexDir="column"
+        alignItems="center"
+        gap={"20px"}
+        bg="#fff"
+        boxShadow="rgb(0 0 0 / 8%) 0px 4px 15px"
+        borderRadius={10}
+        padding="20px"
+      >
+        <Heading>Mint E7ML Certification NFT</Heading>
+        <Text>Now you are going to sign 2 transactions.</Text>
+        <Heading>1. </Heading>
+        <Text>
+          You will approve for the Certification NFT you've minted to the E7ML
+          contract
+        </Text>
+        <Heading>2. </Heading>
+        <Text>You will call the mint function in the E7ML contract.</Text>
+        <Text>
+          It will burn your Certification NFT to mint a E7ML Certification NFT
+        </Text>
 
-      <Flex gap="20px">
-        <Menu>
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            {selectedNFT ? selectedNFT : "Choose NFT"}
-          </MenuButton>
-          <MenuList>
-            {hasQueried ? (
-              renderNftsForOwner()
-            ) : (
-              <MenuItem>Connect your Wallet!</MenuItem>
-            )}
-          </MenuList>
-        </Menu>
-        <Button
-          colorScheme="blue"
-          variant="solid"
-          onClick={handleButtonClick}
-          isLoading={isButtonLoading}
-          loadingText="Minting..."
-        >
-          Receive NFT
-        </Button>
+        <Flex gap="20px">
+          <Menu>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+              {selectedNFT ? selectedNFT : "Choose NFT"}
+            </MenuButton>
+            <MenuList>
+              {hasQueried ? (
+                renderNftsForOwner()
+              ) : (
+                <MenuItem>Connect your Wallet!</MenuItem>
+              )}
+            </MenuList>
+          </Menu>
+          <Button
+            colorScheme="blue"
+            variant="solid"
+            onClick={handleButtonClick}
+            isLoading={isButtonLoading}
+            loadingText="Minting..."
+          >
+            Mint NFT
+          </Button>
+        </Flex>
       </Flex>
-    </Flex>
+    </Box>
   );
 }
 
