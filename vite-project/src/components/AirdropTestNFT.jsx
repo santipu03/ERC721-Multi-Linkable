@@ -51,12 +51,21 @@ function AirdropTestNFT() {
   };
 
   return (
-    <Box padding="40px 0">
-      <Heading textAlign="center">Receive a Test NFT to Link</Heading>
-      <Text textAlign="center">
-        You will receive an NFT that you'll use for linking the E7ML Token.
+    <Flex
+      padding="40px 20px"
+      bg={"#fff"}
+      width={"50%"}
+      borderRadius={10}
+      boxShadow="rgb(0 0 0 / 8%) 0px 4px 15px"
+      height={"400px"}
+      flexDir="column"
+      justifyContent={"space-around"}
+    >
+      <Heading textAlign="center">Receive TOKEN1 NFT</Heading>
+      <Text textAlign="center" fontSize={"lg"}>
+        We will use this NFT to link the E7ML token
       </Text>
-      <Text textAlign="center">
+      <Text textAlign="center" fontStyle={"italic"}>
         In theory, you can link the E7ML token to any NFT you have but this page
         has been built to link the E7ML to this NFT you'll receive. We've called
         it TOKEN1
@@ -72,7 +81,7 @@ function AirdropTestNFT() {
           Receive NFT
         </Button>
       </Flex>
-    </Box>
+    </Flex>
   );
 }
 

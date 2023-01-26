@@ -8,15 +8,10 @@ function Airpdrops() {
       paddingY={"3rem"}
       paddingX={[10, 10, 10, 20, 150, 200]}
       minHeight={"calc(100vh - 161px)"}
-      flexDir="column"
-      alignItems="center"
+      gap={"30px"}
     >
-      <Flex flexDir="column" width={"50%"}>
-        <AirdropOldNFT />
-      </Flex>
-      <Flex flexDir="column" width="50%">
-        <AirdropTestNFT />
-      </Flex>
+      <AirdropOldNFT />
+      <AirdropTestNFT />
     </Flex>
   );
 }

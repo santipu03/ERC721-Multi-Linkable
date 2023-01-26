@@ -51,13 +51,25 @@ function AirdropOldNFT() {
   };
 
   return (
-    <Box padding="40px 0">
+    <Flex
+      padding="40px 20px"
+      bg={"#fff"}
+      width={"50%"}
+      borderRadius={10}
+      boxShadow="rgb(0 0 0 / 8%) 0px 4px 15px"
+      height={"400px"}
+      flexDir="column"
+      justifyContent={"space-around"}
+    >
       <Heading textAlign="center">Receive Old Certification NFT</Heading>
-      <Text textAlign="center">
-        You will receive a simple NFT in your wallet that represents a
-        Certification that you earned.
+      <Text textAlign="center" fontSize={"lg"}>
+        We will use this NFT mint a new E7ML token
       </Text>
-      <Text textAlign="center">Is a simple ERC721 Burnable Token.</Text>
+      <Text textAlign="center" fontStyle={"italic"}>
+        You will receive a simple NFT (ERC721 Burnable) in your wallet that
+        represents a Certification that you earned. We will burn this NFT to
+        mint a E7ML Certification NFT
+      </Text>
       <Flex justifyContent="center">
         <Button
           colorScheme="blue"
@@ -69,7 +81,7 @@ function AirdropOldNFT() {
           Receive NFT
         </Button>
       </Flex>
-    </Box>
+    </Flex>
   );
 }
 
