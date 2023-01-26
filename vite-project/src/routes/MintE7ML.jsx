@@ -131,6 +131,7 @@ function MintE7ML({ alchemy }) {
         boxShadow="rgb(0 0 0 / 8%) 0px 4px 15px"
         borderRadius={10}
         padding="20px"
+        marginX={[0, 0, "3rem", "6rem", "6rem", "16rem"]}
       >
         <Heading>Mint E7ML Certification NFT</Heading>
         <Text>Now you are going to sign 2 transactions.</Text>

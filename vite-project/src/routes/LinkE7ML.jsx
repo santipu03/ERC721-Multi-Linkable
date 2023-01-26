@@ -147,6 +147,7 @@ function LinkE7ML({ alchemy }) {
         borderRadius={10}
         padding="20px"
         flexDir="column"
+        marginX={[0, 0, "3rem", "6rem", "6rem", "16rem"]}
       >
         <Heading>Link your E7ML Certification to your NFT</Heading>
         <Text>Now it's time for the linking!</Text>
