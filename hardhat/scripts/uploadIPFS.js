@@ -6,14 +6,14 @@ async function run() {
   const metadata = {
     path: "/",
     content: JSON.stringify({
-      name: "E7L Certificate",
+      name: "TOKEN1",
       attributes: [
         {
-          trait_type: "Hard Work",
+          trait_type: "Chill",
           value: "100",
         },
         {
-          trait_type: "Grind",
+          trait_type: "Nature",
           value: "120",
         },
         {
@@ -23,8 +23,8 @@ async function run() {
       ],
       // update the IPFS CID to be your image CID
       image:
-        "https://ipfs.io/ipfs/QmUS3JDeJXU8uB9K94URMttJBVwSLZyvzbCZusdPL94FAe?filename=corporate.png",
-      description: "A ERC721 Multi Linkable Token",
+        "https://ipfs.io/ipfs/QmP2NPVRhb5jas7Cac4UUP8PAQWESAMuQGFDfYWLGM1eQC?filename=man_grass.jpg",
+      description: "Chilling man in the grass",
     }),
   };
 
