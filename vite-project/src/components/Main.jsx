@@ -48,7 +48,10 @@ function Main() {
           ERC721ML allows NFTs to get linked to other NFT. This way the parent
           NFT can represent all the NFTs linked to it.
         </Heading>
-        <a href="https://github.com" target="_blank">
+        <a
+          href="https://github.com/santipu03/ERC721-Multi-Linkable"
+          target="_blank"
+        >
           <Button colorScheme="blue" size={"lg"}>
             View on Github
           </Button>
