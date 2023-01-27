@@ -7,20 +7,20 @@ async function deployBasic() {
   const CERTIFICATION = await ethers.getContractFactory("Certification");
   const oldCertification = await CERTIFICATION.deploy();
 
-  // Deploy the E7L Certifications contract
-  const E7L_CERTIFICATION_FACTORY = await ethers.getContractFactory(
-    "E7LCertification"
+  // Deploy the E7ML Certifications contract
+  const E7ML_CERTIFICATION_FACTORY = await ethers.getContractFactory(
+    "E7MLCertification"
   );
-  const E7LCertification = await E7L_CERTIFICATION_FACTORY.deploy(
-    "E7L",
-    "E7L",
+  const E7MLCertification = await E7ML_CERTIFICATION_FACTORY.deploy(
+    "E7ML",
+    "E7ML",
     "randomURI",
     oldCertification.address
   );
 
-  // Deploy the basic implementation of the E7L contract
-  const E7L_MOCK_FACTORY = await ethers.getContractFactory("E7LBasic");
-  const E7LBasic = await E7L_MOCK_FACTORY.deploy("E7L", "E7L");
+  // Deploy the basic implementation of the E7ML contract
+  const E7ML_MOCK_FACTORY = await ethers.getContractFactory("E7MLBasic");
+  const E7MLBasic = await E7ML_MOCK_FACTORY.deploy("E7ML", "E7ML");
 
   // We deploy the test Tokens ERC721 to check the linking later
   const TOKEN1 = await ethers.getContractFactory("Token1");
@@ -29,13 +29,13 @@ async function deployBasic() {
   const token2 = await TOKEN2.deploy();
 
   return {
-    E7LBasic,
+    E7MLBasic,
     account1,
     account2,
     token1,
     token2,
     oldCertification,
-    E7LCertification,
+    E7MLCertification,
   };
 }
 

@@ -3,7 +3,7 @@ pragma solidity ^0.8.7;
 
 import "../ERC721MultiLinkable.sol";
 
-contract E7LBasic is ERC721MultiLinkable {
+contract E7MLBasic is ERC721MultiLinkable {
     constructor(
         string memory _name,
         string memory _symbol

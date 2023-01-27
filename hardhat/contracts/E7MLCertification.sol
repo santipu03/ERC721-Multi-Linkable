@@ -5,13 +5,13 @@ import "./ERC721MultiLinkable.sol";
 import "./IBurnable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
-contract E7LCertification is ERC721MultiLinkable, ERC721Enumerable {
+contract E7MLCertification is ERC721MultiLinkable, ERC721Enumerable {
     string private URI;
     address public owner;
     address public burnableContract;
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "E7LCertification: Not owner");
+        require(msg.sender == owner, "E7MLCertification: Not owner");
         _;
     }
 
@@ -30,7 +30,7 @@ contract E7LCertification is ERC721MultiLinkable, ERC721Enumerable {
     function mint(uint256 tokenId) public {
         require(
             IBurnable(burnableContract).ownerOf(tokenId) == msg.sender,
-            "E7LCertification: Not owner of burnable token"
+            "E7MLCertification: Not owner of burnable token"
         );
         IBurnable(burnableContract).burn(tokenId);
         _safeMint(msg.sender, tokenId);
