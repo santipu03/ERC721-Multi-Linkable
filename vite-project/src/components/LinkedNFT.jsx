@@ -148,7 +148,13 @@ function LinkedNFT({ nft, parentToken }) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleButtonClick}>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={handleButtonClick}
+              isLoading={isButtonLoading}
+              loadingText="Syncing..."
+            >
               Sync Token
             </Button>
           </ModalFooter>

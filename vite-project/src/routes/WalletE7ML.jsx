@@ -2,11 +2,9 @@ import {
   Box,
   Center,
   Divider,
-  GridItem,
   Heading,
   SimpleGrid,
   Flex,
-  Image,
   Text,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
@@ -127,6 +125,9 @@ function WalletE7ML({ alchemy }) {
       <Heading size={"lg"} marginBottom={"20px"}>
         Linked Tokens:{" "}
       </Heading>
+      <Text marginBottom={"2rem"} fontStyle="italic" color={"grey"}>
+        // Click in the linked tokens to see more...
+      </Text>
       {hasQueried ? (
         linkedTokens.length === 0 ? (
           <Center margin="30px 0" fontSize="1.5rem">

@@ -155,7 +155,7 @@ function LinkE7ML({ alchemy }) {
           You will link one of your E7ML tokens to a parent NFT, in this case it
           will be one TOKEN1
         </Text>
-        <Card width="400px">
+        <Card width="400px" variant={"filled"}>
           <CardHeader>
             <Heading size="md" textAlign="center">
               Select the NFTs to link
@@ -164,10 +164,16 @@ function LinkE7ML({ alchemy }) {
           <CardBody>
             <Stack divider={<StackDivider />} spacing="4">
               <Box>
-                <Heading size="s">Token1</Heading>
                 <Menu>
-                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                    {token1SelectedNFT ? token1SelectedNFT : "Choose NFT"}
+                  <MenuButton
+                    as={Button}
+                    rightIcon={<ChevronDownIcon />}
+                    colorScheme={"white"}
+                    variant="outline"
+                    size="lg"
+                    width={"100%"}
+                  >
+                    {token1SelectedNFT ? token1SelectedNFT : "Choose TOKEN1"}
                   </MenuButton>
                   <MenuList>
                     {hasQueried ? (
@@ -179,12 +185,20 @@ function LinkE7ML({ alchemy }) {
                 </Menu>
               </Box>
               <Box>
-                <Heading size="s">E7ML Certification</Heading>
                 <Menu>
-                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                    {E7MLSelectedNFT ? E7MLSelectedNFT : "Choose NFT"}
+                  <MenuButton
+                    as={Button}
+                    rightIcon={<ChevronDownIcon />}
+                    colorScheme={"white"}
+                    variant="outline"
+                    size="lg"
+                    width={"100%"}
+                  >
+                    {E7MLSelectedNFT
+                      ? E7MLSelectedNFT
+                      : "Choose E7ML Certification"}
                   </MenuButton>
-                  <MenuList>
+                  <MenuList width={"100%"}>
                     {hasQueried ? (
                       renderE7MLNftsForOwner()
                     ) : (
@@ -203,6 +217,7 @@ function LinkE7ML({ alchemy }) {
           onClick={handleButtonClick}
           isLoading={isButtonLoading}
           loadingText="Linking..."
+          size={"lg"}
         >
           Link NFTs
         </Button>
