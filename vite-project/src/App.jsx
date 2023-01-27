@@ -26,18 +26,22 @@ const router = createBrowserRouter([
   {
     path: "airdrops",
     element: <Airpdrops />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "mint",
     element: <MintE7ML alchemy={alchemy} />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "link",
     element: <LinkE7ML alchemy={alchemy} />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "wallet",
     element: <WalletE7ML alchemy={alchemy} />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
