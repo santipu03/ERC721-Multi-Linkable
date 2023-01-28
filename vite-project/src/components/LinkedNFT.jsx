@@ -19,7 +19,7 @@ import { useWeb3Contract } from "react-moralis";
 import { E7ML_ABI, E7ML_ADDRESS } from "../../constants";
 import { useState } from "react";
 
-function LinkedNFT({ nft, parentToken }) {
+function LinkedNFT({ nft }) {
   const [isButtonLoading, setIsButtonLoading] = useState(false);
 
   const toast = useToast();
@@ -101,16 +101,16 @@ function LinkedNFT({ nft, parentToken }) {
                   onClick={onOpen}
                 >
                   <Image
-                    src={parentToken.rawMetadata.image}
+                    src={nft.parentToken.rawMetadata.image}
                     alt="img"
                     borderRadius={"10px"}
                   ></Image>
                   <Flex flexDir={"column"} padding={"0 10px"}>
                     <Text>
-                      <b>{parentToken.tokenId}</b>
+                      <b>{nft.parentToken.tokenId}</b>
                     </Text>
                     <Text margin={0}>
-                      <b>{parentToken.contract.name}</b>
+                      <b>{nft.parentToken.contract.name}</b>
                     </Text>
                   </Flex>
                 </Flex>
