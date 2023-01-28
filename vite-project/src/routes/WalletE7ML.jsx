@@ -15,7 +15,6 @@ import LinkedNFT from "../components/LinkedNFT";
 
 function WalletE7ML({ alchemy }) {
   const [hasQueried, setHasQueried] = useState(false);
-  const [E7MLNftsForOwner, setE7MLNftsForOwner] = useState([]);
   const [token1NftsForOwner, setToken1NftsForOwner] = useState([]);
   const [linkedTokens, setLinkedTokens] = useState([]);
   const [unlinkedTokens, setUnlinkedTokens] = useState([]);
@@ -43,23 +42,17 @@ function WalletE7ML({ alchemy }) {
     };
     const tokenInfo = await runContractFunction({
       params: tokenInfoOptions,
-      onSuccess: (tx) => handleApproveSuccess(tx),
       onError: (e) => console.error(e),
     });
 
     return tokenInfo;
   };
 
-  const handleApproveSuccess = async (tx) => {};
-
   const renderLinkedNftsForOwner = () => {
     return linkedTokens.map((nft) => {
-      const parentToken = token1NftsForOwner.find(
-        (token) => token.tokenId === nft.parentTokenId
-      );
       return (
         <Flex alignItems={"center"} justifyContent="center" key={nft.tokenId}>
-          <LinkedNFT nft={nft} parentToken={parentToken} />
+          <LinkedNFT nft={nft} />
         </Flex>
       );
     });
@@ -80,7 +73,11 @@ function WalletE7ML({ alchemy }) {
     for (let i = 0; i < nfts.length; i++) {
       const tokenInfo = await getTokenInfo(nfts[i]);
       if (tokenInfo[0] && !isNftInArray(linkedTokens, nfts[i])) {
-        nfts[i].parentTokenId = tokenInfo.parentTokenId.toString();
+        const parentToken = await alchemy.nft.getNftMetadata(
+          tokenInfo.parentContract,
+          tokenInfo.parentTokenId.toString()
+        );
+        nfts[i].parentToken = parentToken;
         localLinkedTokens.push(nfts[i]);
       } else if (!tokenInfo[0] && !isNftInArray(unlinkedTokens, nfts[i])) {
         localUnlinkedTokens.push(nfts[i]);
@@ -99,7 +96,6 @@ function WalletE7ML({ alchemy }) {
       (nft) => nft.contract.address === E7ML_ADDRESS.toLowerCase()
     );
     setToken1NftsForOwner(token1Nfts);
-    setE7MLNftsForOwner(E7MLNfts);
     await queryLinkingOfTokens(E7MLNfts);
     setHasQueried(true);
   };
@@ -122,44 +118,52 @@ function WalletE7ML({ alchemy }) {
     >
       <Heading>Your E7ML Wallet</Heading>
       <Divider margin="1rem" />
-      <Heading size={"lg"} marginBottom={"20px"}>
-        Linked Tokens:{" "}
-      </Heading>
-      <Text marginBottom={"2rem"} fontStyle="italic" color={"grey"}>
-        // Click in the linked tokens to see more...
-      </Text>
-      {hasQueried ? (
-        linkedTokens.length === 0 ? (
-          <Center margin="30px 0" fontSize="1.5rem">
-            No NFTs in your wallet...
-          </Center>
-        ) : (
-          <SimpleGrid columns={"4"} gap={"15px"}>
-            {renderLinkedNftsForOwner()}
-          </SimpleGrid>
-        )
+      {isWeb3Enabled ? (
+        <>
+          <Heading size={"lg"} marginBottom={"20px"}>
+            Linked Tokens:{" "}
+          </Heading>
+          <Text marginBottom={"2rem"} fontStyle="italic" color={"grey"}>
+            // Click in the linked tokens to see more...
+          </Text>
+          {hasQueried ? (
+            linkedTokens.length === 0 ? (
+              <Center margin="30px 0" fontSize="1.5rem">
+                No linked E7ML in your wallet...
+              </Center>
+            ) : (
+              <SimpleGrid columns={"4"} gap={"15px"}>
+                {renderLinkedNftsForOwner()}
+              </SimpleGrid>
+            )
+          ) : (
+            <Center margin="30px 0" fontSize="1.5rem">
+              Loading...
+            </Center>
+          )}
+          <Divider margin={"1rem"} />
+          <Heading size={"lg"} marginBottom={"20px"}>
+            Unlinked Tokens:{" "}
+          </Heading>
+          {hasQueried ? (
+            unlinkedTokens.length === 0 ? (
+              <Center margin="30px 0" fontSize="1.5rem">
+                No unlinked E7ML in your wallet...
+              </Center>
+            ) : (
+              <SimpleGrid columns={"4"} gap={"15px"}>
+                {renderUnlinkedNftsForOwner()}
+              </SimpleGrid>
+            )
+          ) : (
+            <Center margin="30px 0" fontSize="1.5rem">
+              Loading...
+            </Center>
+          )}
+        </>
       ) : (
         <Center margin="30px 0" fontSize="1.5rem">
-          Loading...
-        </Center>
-      )}
-      <Divider margin={"1rem"} />
-      <Heading size={"lg"} marginBottom={"20px"}>
-        Unlinked Tokens:{" "}
-      </Heading>
-      {hasQueried ? (
-        unlinkedTokens.length === 0 ? (
-          <Center margin="30px 0" fontSize="1.5rem">
-            No NFTs in your wallet...
-          </Center>
-        ) : (
-          <SimpleGrid columns={"4"} gap={"15px"}>
-            {renderUnlinkedNftsForOwner()}
-          </SimpleGrid>
-        )
-      ) : (
-        <Center margin="30px 0" fontSize="1.5rem">
-          Loading...
+          Connect your Wallet...
         </Center>
       )}
     </Box>
