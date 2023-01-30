@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import Header from "./components/Header";
-import Main from "./components/Main";
+import Main from "./routes/Main";
 import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
