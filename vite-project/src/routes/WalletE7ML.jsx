@@ -15,7 +15,6 @@ import LinkedNFT from "../components/LinkedNFT";
 
 function WalletE7ML({ alchemy }) {
   const [hasQueried, setHasQueried] = useState(false);
-  const [token1NftsForOwner, setToken1NftsForOwner] = useState([]);
   const [linkedTokens, setLinkedTokens] = useState([]);
   const [unlinkedTokens, setUnlinkedTokens] = useState([]);
 
@@ -95,7 +94,6 @@ function WalletE7ML({ alchemy }) {
     const E7MLNfts = nfts.ownedNfts.filter(
       (nft) => nft.contract.address === E7ML_ADDRESS.toLowerCase()
     );
-    setToken1NftsForOwner(token1Nfts);
     await queryLinkingOfTokens(E7MLNfts);
     setHasQueried(true);
   };

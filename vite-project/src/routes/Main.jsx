@@ -61,7 +61,6 @@ function Main() {
 
       <Flex
         flexDir={"column"}
-        // alignItems="center"
         justifyContent={"space-around"}
         bg="#fff"
         margin="8rem 6rem"

@@ -1,4 +1,4 @@
-import { Heading, Button, useToast, Flex, Box, Text } from "@chakra-ui/react";
+import { Heading, Button, useToast, Flex, Text } from "@chakra-ui/react";
 import { useWeb3Contract } from "react-moralis";
 import { CERTIFICATION_ADDRESS, CERTIFICATION_ABI } from "../../constants";
 import { useState } from "react";
